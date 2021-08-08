@@ -45,13 +45,13 @@
 * Support input validation including Empty check and Email Format validation
 * In Configuration File, emailProvider1.primary=true, means this email provider will be run first, and switch to the email provider with primary=false. 
 
-# TODO list:
-* cc and bcc need to support email list, currently only support single email
+# TODO list:(Due to time limit, below needs to be improved)
 * Missing many test cases, run out of time.
 * API Document should be moved to a API document tool like SwaggerHub
 * Need to add more error handling on top of above handling errors.
 * Add Logging using Lombok
 * Add detailed error message returned from email provider API, fix bug with response status code.
+* cc and bcc need to support email list, currently only support single email
 
 # Cloud Deployment
 * Deployed to AWS 
