@@ -18,6 +18,13 @@ Servers: http://microserviceexample.eba-nt3jhu8m.ap-southeast-2.elasticbeanstalk
     "text":"emailTest"
   }
 ```
+* Success Response:
+```json
+{
+    "message": "Send Email success via mailGun",
+    "details": []
+}
+```
 * The executable jar has been deployed into below location via AWS Elastic Beanstalk
 * Version:
   email-service-1.0.1.jar
