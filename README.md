@@ -18,7 +18,7 @@ Servers: http://microserviceexample.eba-nt3jhu8m.ap-southeast-2.elasticbeanstalk
     "text":"emailTest"
   }
 ```
-* Success Response:
+* Success Response (For SendGrip = 202 ACCEPTED, For MailGun = 200 OK)
 ```json
 {
     "message": "Send Email success via mailGun",
