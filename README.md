@@ -28,5 +28,6 @@ Servers: http://microserviceexample.eba-nt3jhu8m.ap-southeast-2.elasticbeanstalk
 
 # TODO list:
 * cc and bcc need to support email list, currently only support single email
-* Missing many test cases
-* 
+* Missing many test cases, run out of time.
+* API Document should be moved to a API document tool like SwaggerHub
+
