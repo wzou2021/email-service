@@ -57,7 +57,7 @@
 * Deployed to AWS 
 * URL http://webserviceexample-env.eba-y2z3ppjc.ap-southeast-2.elasticbeanstalk.com/api/v1/sendEmail
 * NOTE: Properies file contains my test account information, so it only works for below example payload
-JSON for sending to mailGun successfully
+* JSON for sending to mailGun successfully
 ```json
 {
     "from":"wenjingzou@gmail.com",
@@ -68,7 +68,7 @@ JSON for sending to mailGun successfully
     "text":"emailTest"
 }
 ```
-JSON for sending sendGrip successfully
+* JSON for sending sendGrip successfully
 ```json
 {
     "from":"hongbinbiz@gmail.com",
