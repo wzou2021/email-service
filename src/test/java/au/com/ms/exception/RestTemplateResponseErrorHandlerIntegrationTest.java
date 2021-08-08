@@ -38,22 +38,8 @@ public class RestTemplateResponseErrorHandlerIntegrationTest {
     @Autowired 
     private RestTemplateBuilder builder;
 
-    @Test(expected = NotFoundException.class)
-    public void  givenRemoteApiCall_when404Error_thenThrowNotFound() {
+    @Test
+    public void  givenApiCall_whenWrongAuth_thenThrowAuthenticationException() {
     	
-        Assert.assertNotNull(this.builder);
-        Assert.assertNotNull(this.server);
-
-        RestTemplate restTemplate = this.builder
-          .errorHandler(new RestTemplateResponseErrorHandler())
-          .build();
-
-        this.server
-          .expect(ExpectedCount.once(), requestTo("/bars/4242"))
-          .andExpect(method(HttpMethod.POST))
-          .andRespond(withStatus(HttpStatus.NOT_FOUND));
-
-        String response = restTemplate.getForObject("/bars/4242", String.class);
-        this.server.verify();
     }
 }

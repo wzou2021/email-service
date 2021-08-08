@@ -10,9 +10,10 @@ public class RequestDataHelperTest extends AbstractTest{
 	
 	@Test
 	public void testConstructSGJson() throws JsonProcessingException {
-		EmailRequest request = mockRequest();
+		EmailRequest request = mockSendGripSuccessRequest();
 		String json = RequestDataHelper.ConstructSGApiInputJson(request);
-		System.out.println(json);
+		//TODO, compare with a jsonfile in resource.
+		
 	}
 
 }

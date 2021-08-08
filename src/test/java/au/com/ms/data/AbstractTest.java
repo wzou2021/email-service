@@ -5,8 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.runner.RunWith;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -21,27 +19,13 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import au.com.ms.EmailServiceApplication;
-import au.com.ms.controller.SendEmailController;
+import au.com.ms.config.AppProp.EmailProvider;
 import au.com.ms.model.EmailRequest;
-import au.com.ms.service.SendEmailService;
 
-@RunWith(SpringRunner.class)
-@SpringBootTest(classes = EmailServiceApplication.class)
-@WebAppConfiguration
+
 public abstract class AbstractTest {
+	
 
-	protected MockMvc mockMvc;
-
-
-	@InjectMocks
-	private SendEmailController sendEmailController;
-
-	@Autowired
-	WebApplicationContext webApplicationContext;
-
-	protected void setUp() {
-		mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext).build();
-	}
 
 	protected String mapToJson(Object obj) throws JsonProcessingException {
 		ObjectMapper objectMapper = new ObjectMapper();
@@ -55,20 +39,57 @@ public abstract class AbstractTest {
 		return objectMapper.readValue(json, clazz);
 	}
 
-	public EmailRequest mockRequest() {
+	public EmailProvider mockSuccessMGProvider() {
+		EmailProvider emailProvider = new EmailProvider();
+		emailProvider
+				.setApiUrl("https://api.mailgun.net/v3/sandbox0467b0ab769544b79ecffccedec0a928.mailgun.org/messages");
+		emailProvider.setAuthPassword("9cb667689a7f22244f3d9407ff152a07-64574a68-c04875f3");
+		emailProvider.setAuthUsername("api");
+		emailProvider.setAuthType("basic");
+		emailProvider.setName("mailGun");
+		return emailProvider;
+	}
+	
+
+	public EmailProvider mockFailSGProvider() {
+		EmailProvider emailProvider = new EmailProvider();
+		emailProvider.setApiUrl("");			
+		emailProvider.setAuthType("bearToken");
+		emailProvider.setAuthToken("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");
+		emailProvider.setName("sendGrip");
+		return emailProvider;
+	}
+	
+	public EmailProvider mockSuccessSGProvider() {
+		EmailProvider emailProvider = new EmailProvider();
+		emailProvider.setApiUrl("https://api.sendgrid.com/v3/mail/send");			
+		emailProvider.setAuthType("bearToken");
+		emailProvider.setAuthToken("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");
+		emailProvider.setName("sendGrip");
+		return emailProvider;
+	}
+	public EmailRequest mockSendGripSuccessRequest() {
+		EmailRequest request = new EmailRequest();
+		List<String> toEmails = new ArrayList<String>();
+		toEmails.add("wenjingzou@gmail.com");
+		request.setTo(toEmails);
+		request.setFrom("hongbinbiz@gmail.com");
+		request.setText("Mail gun");
+		request.setSubject("test Mail Gun");
+		return request;			
+	}
+
+	public EmailRequest mockMailGunSuccessRequest() {
 
 		EmailRequest request = new EmailRequest();
-		List<String> emails = new ArrayList<String>();
-		emails.add("wenjingzou@gmail.com");
-		request.setFrom("hongbinbiz@gmail.com");
-		request.setTo(emails);
-		request.setCc("test1@gmail.com");
-		request.setBcc("test2@gmail.com");
-		request.setText("text");
-		request.setSubject("test subject");
+		List<String> toEmails = new ArrayList<String>();
+		toEmails.add("hongbinbiz@gmail.com");
+		request.setTo(toEmails);
+		request.setFrom("wenjingzou@gmail.com");
+		request.setText("Mail gun");
+		request.setSubject("test Mail Gun");
 
 		return request;
 
 	}
-
 }
