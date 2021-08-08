@@ -48,7 +48,7 @@
 # TODO list:
 * Missing many test cases, run out of time.
 * API Document should be moved to a API document tool like SwaggerHub
-* Need to add more error handling on top of above handling errors.
+* Need to add more error, for example(not found etc)
 * Add Logging using Lombok
 * Add detailed error message returned from email provider API, fix bug with response status code.
 * cc and bcc need to support email list, currently only support single email
