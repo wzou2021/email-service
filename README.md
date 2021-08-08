@@ -18,13 +18,21 @@ Servers: http://microserviceexample.eba-nt3jhu8m.ap-southeast-2.elasticbeanstalk
     "text":"emailTest"
   }
 ```
-* Success Response (For SendGrip = 202 ACCEPTED, For MailGun = 200 OK)
+* Success Response Example (For SendGrip = 202 ACCEPTED, For MailGun = 200 OK)
 ```json
 {
     "message": "Send Email success via mailGun",
     "details": []
 }
 ```
+* Failed Response Example:
+```json
+{
+    "message": "faild",
+    "details": "Timeout"
+}
+```
+
 * The executable jar has been deployed into below location via AWS Elastic Beanstalk
 * Version:
   email-service-1.0.1.jar
