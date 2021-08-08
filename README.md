@@ -69,6 +69,7 @@ JSON for sending to mailGun successfully
 }
 ```
 JSON for sending sendGrip successfully
+```json
 {
     "from":"hongbinbiz@gmail.com",
     "to":[
@@ -77,4 +78,4 @@ JSON for sending sendGrip successfully
     "subject":"Mail Gun Testing",
     "text":"emailTest"
 }
-
+```
