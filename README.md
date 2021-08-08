@@ -75,7 +75,9 @@
     "to":[
         "wenjingzou@gmail.com","hongbinbiz05@gmail.com"
     ], 
-    "subject":"Send Grip Testing",
+    "cc":"test@gmail.com",
+    "bcc":"test1@gmail.com",
+    "subject":"Mail Gun Testing",
     "text":"emailTest"
 }
 ```
