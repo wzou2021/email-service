@@ -36,7 +36,11 @@ Servers: http://webserviceexample-env.eba-y2z3ppjc.ap-southeast-2.elasticbeansta
 * The executable jar has been deployed into below location via AWS Elastic Beanstalk
 * Version:
   email-service-1.0.1.jar
-
+# Installation Guid
+* modify email.properties
+* mvn install
+* java -jar email-service-1.x.0.jar
+* 
 # FEATURE list:
 * Support input validation including Empty check and Email Format validation
 * In Configuration File, emailProvider1.primary=true, means this email provider will be run first, and switch to the email provider with primary=false. 
