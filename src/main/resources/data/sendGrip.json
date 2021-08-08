@@ -1,0 +1,21 @@
+{
+      "personalizations": [
+        {
+          "to": [
+            {
+              "email": "wenjingzou@gmail.com"
+            }
+          ],
+          "subject": "send email via SendGrip"
+        }
+      ],
+      "from": {
+        "email": "hongbinbiz@gmail.com"
+      },
+      "content": [
+        {
+          "type": "text/plain",
+          "value": "Hello, World!"
+        }
+      ]
+}
