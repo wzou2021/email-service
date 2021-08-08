@@ -9,16 +9,12 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
-import au.com.ms.exception.ApiResponseHandler;
 import au.com.ms.exception.RestTemplateResponseErrorHandler;
-import au.com.ms.exception.SendEmailResponse;
 import au.com.ms.model.ClientData;
 import lombok.extern.slf4j.Slf4j;
-
 
 @Component
 @Slf4j
@@ -40,21 +36,24 @@ public class APIClient {
 	}
 
 	public String postByJSON(ClientData client) {
-		
+		try {
 			client.getHeaders().setContentType(MediaType.APPLICATION_JSON);
 			HttpEntity<String> request = new HttpEntity<String>(client.getJson().toString(), client.getHeaders());
 			String response = restTemplate.postForObject(client.getApiUrl(), request, String.class);
 			return response;
-	
+		} catch (Exception e) {
+			throw e;
+		}
 	}
 
 	public String postByParam(ClientData client) {
-	
+		try {
 			HttpEntity<?> request = new HttpEntity<>(client.getParams(), client.getHeaders());
 			String response = restTemplate.postForObject(client.getApiUrl(), request, String.class);
 			return response;
-		
-		
+		} catch (Exception e) {
+			throw e;
+		}
 	}
 
 }

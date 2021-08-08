@@ -10,9 +10,10 @@ import au.com.ms.data.AppConstants;
 
 public class ApiResponseHandler {
 
-	public static ResponseEntity<SendEmailResponse> getSuccessResponse() {
-		SendEmailResponse response = new SendEmailResponse(AppConstants.RESPONSE_SUCCESS, null);
-		return new ResponseEntity<>(response, HttpStatus.OK);
+	public static ResponseEntity<SendEmailResponse> getSuccessResponse(String providerName, HttpStatus status) {
+		String successMessage = String.format("Send Email %s via %s", AppConstants.RESPONSE_SUCCESS, providerName);
+		SendEmailResponse response = new SendEmailResponse(successMessage, null);
+		return new ResponseEntity<>(response, status);
 	}
 
 	public static ResponseEntity<SendEmailResponse> getFailedResponse(Exception e) {
@@ -32,10 +33,10 @@ public class ApiResponseHandler {
 		return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 
-	public static ResponseEntity<SendEmailResponse> getResponseFromAPI(ResponseEntity<String> response) {
+	public static ResponseEntity<SendEmailResponse> getResponseFromAPI(ResponseEntity<String> response,String providerName) {
 		// Assume it is successful
 		if (response.getStatusCode().equals(HttpStatus.ACCEPTED) || response.getStatusCode().equals(HttpStatus.OK)) {
-			return getSuccessResponse();
+			return getSuccessResponse(providerName,response.getStatusCode());
 		}
 
 		List<String> details = new ArrayList<String>();

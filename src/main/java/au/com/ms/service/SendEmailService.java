@@ -9,5 +9,6 @@ import au.com.ms.model.EmailRequest;
 public interface SendEmailService {
 	public abstract ResponseEntity<SendEmailResponse> sendEmail(EmailRequest request);
 	public abstract ResponseEntity<SendEmailResponse> sendEmail(EmailProvider emailProvider, EmailRequest request);
+	public abstract void setEmailProvider(EmailProvider primary, EmailProvider secondary);
 }
 	

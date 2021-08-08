@@ -25,21 +25,17 @@ import au.com.ms.controller.SendEmailController;
 import au.com.ms.model.EmailRequest;
 import au.com.ms.service.SendEmailService;
 
-
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = EmailServiceApplication.class)
 @WebAppConfiguration
 public abstract class AbstractTest {
-	
-protected MockMvc mockMvc;
-	
-	@Mock
-	private SendEmailService sendEmailService;
-	
+
+	protected MockMvc mockMvc;
+
+
 	@InjectMocks
 	private SendEmailController sendEmailController;
-	
-	
+
 	@Autowired
 	WebApplicationContext webApplicationContext;
 
@@ -58,9 +54,9 @@ protected MockMvc mockMvc;
 		ObjectMapper objectMapper = new ObjectMapper();
 		return objectMapper.readValue(json, clazz);
 	}
-	
+
 	public EmailRequest mockRequest() {
-		
+
 		EmailRequest request = new EmailRequest();
 		List<String> emails = new ArrayList<String>();
 		emails.add("wenjingzou@gmail.com");
@@ -70,9 +66,9 @@ protected MockMvc mockMvc;
 		request.setBcc("test2@gmail.com");
 		request.setText("text");
 		request.setSubject("test subject");
-		
+
 		return request;
-		
+
 	}
 
 }

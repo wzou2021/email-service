@@ -7,6 +7,7 @@ import java.util.List;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -46,12 +47,19 @@ public class RequestDataHelper {
 		List<Personalizations> personalizationsList = new ArrayList<SGJson.Personalizations>();
 		Personalizations personalizations = new Personalizations();
 		personalizations.setSubject(request.getSubject());
+	
 		personalizations.setTo(getEmailListForTo(request.getTo()));
-		personalizations.setCc(getEmailList(request.getCc()));
-		personalizations.setBcc(getEmailList(request.getBcc()));
+		if(!AppUtils.isNullOrEmpty(request.getCc())) {
+			personalizations.setCc(getEmailList(request.getCc()));
+		}
+		if(!AppUtils.isNullOrEmpty(request.getBcc())) {
+			personalizations.setBcc(getEmailList(request.getBcc()));
+		}
+		
 		personalizationsList.add(personalizations);
 		json.setPersonalizations(personalizationsList);
 		ObjectMapper mapper = new ObjectMapper();
+		mapper.setSerializationInclusion(Include.NON_NULL);
 		try {
 			String jsonString = mapper.writeValueAsString(json);
 			return jsonString;

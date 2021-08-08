@@ -18,8 +18,10 @@ import au.com.ms.exception.ApiResponseHandler;
 import au.com.ms.exception.SendEmailResponse;
 import au.com.ms.model.ClientData;
 import au.com.ms.model.EmailRequest;
+import lombok.extern.slf4j.Slf4j;
 
 @Service
+@Slf4j
 public class SendEmailServiceImpl implements SendEmailService {
 
 	@Autowired
@@ -45,9 +47,11 @@ public class SendEmailServiceImpl implements SendEmailService {
 	@Override
 	public ResponseEntity<SendEmailResponse> sendEmail(EmailRequest request) {
 		ResponseEntity<SendEmailResponse> response = sendEmail(primaryProvider, request);
-		if (!response.getStatusCode().equals(HttpStatus.OK)) {
-			response = sendEmail(secondaryProvider, request);
+		if (response.getStatusCode().equals(HttpStatus.OK) || response.getStatusCode().equals(HttpStatus.ACCEPTED)) {
+			return response;
 		}
+		//LOG here
+		response = sendEmail(secondaryProvider, request);
 		return response;
 	}
 
@@ -62,13 +66,12 @@ public class SendEmailServiceImpl implements SendEmailService {
 				String json = RequestDataHelper.ConstructSGApiInputJson(request);
 				clientData.setJson(json);
 				String response = apiClient.postByJSON(clientData);
-				
-				return ApiResponseHandler.getResponseFromAPI(new ResponseEntity<String>(response, HttpStatus.ACCEPTED));
+				return ApiResponseHandler.getResponseFromAPI(new ResponseEntity<String>(response, HttpStatus.ACCEPTED), provider.getName());
 			} else if (AppConstants.EMAIL_PROVIDER_MAIL_GUN.equalsIgnoreCase(provider.getName())) {
 				MultiValueMap<String, String> map = RequestDataHelper.ConstructMGApiInputMap(request);
 				clientData.setParams(map);
 				String response = apiClient.postByParam(clientData);
-				return ApiResponseHandler.getResponseFromAPI(new ResponseEntity<String>(response, HttpStatus.OK));
+				return ApiResponseHandler.getResponseFromAPI(new ResponseEntity<String>(response, HttpStatus.OK), provider.getName());
 			} else {
 				return ApiResponseHandler.getFailedResponse(AppConstants.RESPONSE_UNKNOWN_PROVIDER);
 			}
@@ -87,6 +90,12 @@ public class SendEmailServiceImpl implements SendEmailService {
 			headers.setBearerAuth(provider.getAuthToken());
 		}
 		return headers;
+	}
+
+	@Override
+	public void setEmailProvider(EmailProvider primary, EmailProvider secondary) {
+		this.primaryProvider = primary;
+		this.secondaryProvider = secondary;
 	}
 
 }
