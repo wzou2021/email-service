@@ -49,19 +49,8 @@ public class RestTemplateResponseErrorHandler implements ResponseErrorHandler {
 			}
 		}
 	}
-	
+	//TODO
 	private String getResponseBody(ClientHttpResponse response) {
-		try {
-	        InputStream responseBody = response.getBody();
-	        if (responseBody != null) {
-	        	byte[] result =  FileCopyUtils.copyToByteArray(responseBody);
-	        	if(result!= null) {
-	        		return result.toString();
-	        	}
-	        }
-	    } catch (IOException ex) {
-	        // ignore
-	    }
 	    return "";
 	}
 

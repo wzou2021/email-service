@@ -1,7 +1,6 @@
 package au.com.ms.exception;
 import java.util.List;
-import javax.xml.bind.annotation.XmlRootElement;
- 
+
 
 public class SendEmailResponse 
 {
