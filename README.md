@@ -55,8 +55,8 @@
 
 # Cloud Deployment
 * Deployed to AWS 
-http://webserviceexample-env.eba-y2z3ppjc.ap-southeast-2.elasticbeanstalk.com/api/v1/sendEmail
-(Properies file contains my test account information, so it only works for below example payload)
+* URL http://webserviceexample-env.eba-y2z3ppjc.ap-southeast-2.elasticbeanstalk.com/api/v1/sendEmail
+* NOTE: Properies file contains my test account information, so it only works for below example payload
 ```json
 {
     "from":"wenjingzou@gmail.com",
