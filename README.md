@@ -1,10 +1,9 @@
 # Email Service API Document
 
-* API document:
-Servers: http://webserviceexample-env.eba-y2z3ppjc.ap-southeast-2.elasticbeanstalk.com/api/v1/sendEmail
+*  API: /api/v1/sendEmail
 * Method:POST
 * Authentication: NO 
-* Response Schemas : 500(INTERNAL_SERVER_ERROR), 400(BAD_REQUEST), 401(UNAUTHORIZED)
+* Response Schemas : 500(INTERNAL_SERVER_ERROR), 400(BAD_REQUEST), 401(UNAUTHORIZED) etc.
 * Payload Example : 
  ```json
 {
