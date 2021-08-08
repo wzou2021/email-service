@@ -4,7 +4,7 @@
 Servers: http://microserviceexample.eba-nt3jhu8m.ap-southeast-2.elasticbeanstalk.com/api/v1/sendEmail
 * Method:POST
 * Authentication: NO
-* Response Schemas : 
+* Response Schemas : 500(INTERNAL_SERVER_ERROR), 400(BAD_REQUEST), 401(UNAUTHORIZED)
 * Payload Example : 
  ```json
 {
@@ -24,10 +24,12 @@ Servers: http://microserviceexample.eba-nt3jhu8m.ap-southeast-2.elasticbeanstalk
 
 # FEATURE list:
 * Support input validation including Empty check and Email Format validation
+* In Configuration File, emailProvider1.primary=true, means this email provider will be run first, and switch to the email provider with primary=false. 
 
 
 # TODO list:
 * cc and bcc need to support email list, currently only support single email
 * Missing many test cases, run out of time.
 * API Document should be moved to a API document tool like SwaggerHub
+* Need to add more error handling on top of above handling errors.
 
