@@ -12,15 +12,21 @@ Servers: http://microserviceexample.eba-nt3jhu8m.ap-southeast-2.elasticbeanstalk
     "to":[
         "test2@gmail.com","test3@gmail.com"
     ], 
-    "cc":"test4@gmail.com"
-    "bcc":"test5@gmail.com"
+    "cc":"test4@gmail.com",
+    "bcc":"test5@gmail.com",
     "subject":"Mail Gun Testing",
     "text":"emailTest"
   }
 ```
-  . 
 * The executable jar has been deployed into below location via AWS Elastic Beanstalk
 * Version:
   email-service-1.0.1.jar
 
-TODO list:
+# FEATURE list:
+* Support input validation including Empty check and Email Format validation
+
+
+# TODO list:
+* cc and bcc need to support email list, currently only support single email
+* Missing many test cases
+* 
