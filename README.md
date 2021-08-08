@@ -8,10 +8,12 @@ Servers: http://microserviceexample.eba-nt3jhu8m.ap-southeast-2.elasticbeanstalk
 * Payload Example : 
  ```json
 {
-    "from":"wenjingzou@gmail.com",
+    "from":"test1@gmail.com",
     "to":[
-        "hongbinbiz@gmail.com","hongbinbiz05@gmail.com"
+        "test2@gmail.com","test3@gmail.com"
     ], 
+    "cc":"test4@gmail.com"
+    "bcc":"test5@gmail.com"
     "subject":"Mail Gun Testing",
     "text":"emailTest"
   }
