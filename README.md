@@ -47,4 +47,5 @@ Servers: http://microserviceexample.eba-nt3jhu8m.ap-southeast-2.elasticbeanstalk
 * Missing many test cases, run out of time.
 * API Document should be moved to a API document tool like SwaggerHub
 * Need to add more error handling on top of above handling errors.
+* Add Logging using Lombok
 
