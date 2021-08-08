@@ -53,3 +53,17 @@
 * Need to add more error handling on top of above handling errors.
 * Add Logging using Lombok
 
+# Cloud Deployment
+* Deployed to AWS 
+http://webserviceexample-env.eba-y2z3ppjc.ap-southeast-2.elasticbeanstalk.com/api/v1/sendEmail
+(Properies file contains my test account information, so it only works for below example payload)
+```json
+{
+    "from":"wenjingzou@gmail.com",
+    "to":[
+        "hongbinbiz@gmail.com","hongbinbiz05@gmail.com"
+    ], 
+    "subject":"Mail Gun Testing",
+    "text":"emailTest"
+}
+```
